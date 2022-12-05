@@ -7,15 +7,15 @@ const inPath = './files/fileToCompress.txt';
 const outPath = './files/destination.txt.gz';
 
 const compress = async () => {
-    const read = createReadStream(inPath, 'utf-8');
-    const gzip = createGzip();
-    const write = createWriteStream(outPath);
+  const read = createReadStream(inPath, 'utf-8');
+  const gzip = createGzip();
+  const write = createWriteStream(outPath);
 
-    pipeline(read, gzip, write, err => {
-        console.log(err);
-    })
+  pipeline(read, gzip, write, (err) => {
+    console.log(err);
+  });
 
-    await rm(inPath);
+  await rm(inPath);
 };
 
 await compress();
